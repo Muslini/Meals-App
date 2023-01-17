@@ -28,7 +28,7 @@ function submitHandler(event) {
       <form onSubmit={submitHandler}>
         <div className="input">
           <label>Amount</label>
-          <input ref={amountRef} type="number" step="1" min="1" max="5" required />
+          <input ref={amountRef} value="1" type="number" step="1" min="1" max="5" required />
         </div>
         <button>Add</button>
       </form>

@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import image from "../images/meals.jpg";
+import image from "../images/p1.jpg";
 import Cart from "./Cart";
 import CartContext from "../context/meals-context";
 
@@ -24,7 +24,10 @@ function Header() {
     setCart(false);
   }
 
-  
+  const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
+
   return (
     <Fragment>
       {showCart && <Cart closeCart={unhandleCart} />}
@@ -40,7 +43,7 @@ function Header() {
             style={{ fontSize: "1.5rem" }}
           />
           <span>Your Items</span>
-          <span className="badge">{ctx.items.length}</span>
+          <span className="badge">{numberOfCartItems}</span>
         </button>
       </div>
       <div className="img-box">
