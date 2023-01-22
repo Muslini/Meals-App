@@ -30,7 +30,7 @@ function cartReducer(state, action) {
     }
 
     if(action.type === "MINUS") {
-        const exists = state.items.findIndex((element) => { if(element.id === action.id) {return true}})
+        const exists = state.items.findIndex(element => element.id === action.id)
         const existsItem = state.items[exists];
         let updatedItems;
         const calcAmount = state.totalAmount - existsItem.price;
@@ -51,6 +51,17 @@ function cartReducer(state, action) {
             totalAmount: calcAmount 
         }
     }
+    if(action.type === "DELETE") {
+        const exists = state.items.findIndex(element => element.id === action.id);
+        const existsItem = state.items[exists];
+        const updatedItems = state.items.filter(element => element.id !== action.id);
+        const calcAmount = state.totalAmount - (existsItem.price * existsItem.amount);
+        return {
+            items: updatedItems,
+            totalAmount: calcAmount 
+        }
+    }
+
     return defaultCart;
 };
 
@@ -66,11 +77,16 @@ function ContextProvider(props) {
         cartDispatch({type:"MINUS", id: id})
     };
 
+    function deleteHandler(id) {
+        cartDispatch({type:"DELETE", id:id})
+    }
+
     const contextValue = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addHandler,
-        removeItem: removeHandler
+        removeItem: removeHandler,
+        deleteItem: deleteHandler
     }
 
     return (

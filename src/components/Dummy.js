@@ -3,25 +3,25 @@ const DUMMY_MEALS = [
       id: 'm1',
       name: 'Jollof Rice',
       description: 'Finest Rice and Chicken',
-      price: 22.99,
+      price: 2500,
     },
     {
       id: 'm2',
       name: 'Amala',
       description: 'A yoruba specialty!',
-      price: 16.5,
+      price: 1250,
     },
     {
       id: 'm3',
       name: 'Barbecue Burger',
-      description: 'Nigerianan, raw, meaty',
-      price: 12.99,
+      description: 'Nigerian, raw, meaty',
+      price: 1100,
     },
     {
       id: 'm4',
       name: 'Cole Slaw',
       description: 'Healthy and fresh',
-      price: 18.99,
+      price: 800,
     },
   ];
 

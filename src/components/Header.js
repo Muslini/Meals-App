@@ -3,10 +3,12 @@ import { Icon } from "@iconify/react";
 import image from "../images/p1.jpg";
 import Cart from "./Cart";
 import CartContext from "../context/meals-context";
+import CheckOut from "./Checkout";
 
 function Header() {
   const [buttonBump, setBump] = useState(false);
   const [showCart, setCart] = useState(false);
+  const [showCheckout, setCheckout] = useState(false);
   const ctx = useContext(CartContext);
   useEffect(() => {
     if(ctx.items.length === 0) { return; }  
@@ -23,6 +25,13 @@ function Header() {
   function unhandleCart() {
     setCart(false);
   }
+  function startCheckout() {
+    setCheckout(true);
+    setCart(false);
+  }
+  function closeCheckout() {
+    setCheckout(false);
+  }
 
   const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
@@ -30,7 +39,8 @@ function Header() {
 
   return (
     <Fragment>
-      {showCart && <Cart closeCart={unhandleCart} />}
+      {showCart && <Cart closeCart={unhandleCart} openCheckout={startCheckout} />}
+      {showCheckout && <CheckOut cancelCheckout={closeCheckout} />}
       <div className="header-box">
         <p>MealsApp</p>
         <button

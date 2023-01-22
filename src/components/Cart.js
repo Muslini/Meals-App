@@ -1,18 +1,12 @@
 import React, { Fragment, useContext } from "react";
 import ReactDOM from "react-dom";
 import Card from "./UI/Card";
-import "./Cart.css";
 import CartItem from "./CartItem";
 import CartContext from "../context/meals-context";
 
-
-function doNothing() {
-  console.log("musa");
-}
-
 function Cart(props) {
   const ctx = useContext(CartContext);
-  const realAmount = ctx.totalAmount.toFixed(1)
+  const realAmount = ctx.totalAmount.toLocaleString();
   function addOne(item) {
     ctx.addItem({...item, amount: 1})
   }
@@ -42,13 +36,13 @@ function Cart(props) {
           <div className="cart-container">
             {ctx.items.map(mapThrough)}
           </div>
-          <div className="totals">
+          <div className="totals margin">
             <span>Total Amount</span>
-            <span>${realAmount}</span>
+            <span>₦{realAmount}</span>
           </div>
           <div className="buttons">
             <button onClick={props.closeCart}>Close</button>
-            <button onClick={doNothing}>Order</button>
+            <button onClick={props.openCheckout}>Order</button>
           </div>
         </Card>
       </Fragment>
@@ -58,7 +52,7 @@ function Cart(props) {
 
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Modal closeCart={props.closeCart} />, document.getElementById("overlay"))}
+      {ReactDOM.createPortal(<Modal closeCart={props.closeCart} openCheckout={props.openCheckout}/>, document.getElementById("overlay"))}
     </Fragment>
   );
 }
