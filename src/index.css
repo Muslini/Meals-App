@@ -136,10 +136,6 @@ background-color: #92320c;
   margin-bottom: 4rem;
 }
 
-@media screen and (min-width: 768px) {
-  .meals-box {padding: 1rem 2.5rem;}
-}
-
 /* Cart styling */
 .cart-box {
   position: fixed;
@@ -224,6 +220,18 @@ animation: slide-down 600ms ease-out forwards;
   }
 }
 
+@media screen and (min-width: 768px) {
+  .meals-box {padding: 1rem 2.5rem; width: 70%;}
+  .summary {
+    width: 65%;
+  }
+  .cart-card{
+    width: 70%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 /* Cart Items styling */
 .cart-container {
   flex-direction: column;
@@ -235,7 +243,7 @@ animation: slide-down 600ms ease-out forwards;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #8a2b06;
+  border-bottom: 1px solid #8a2b06;
   padding: 1rem 0;
   margin: 0;
   width: 100%;
@@ -302,17 +310,22 @@ animation: slide-down 600ms ease-out forwards;
   background-color: white;
   z-index: 40;
   text-align: center;
-  padding-top: 8vh;
+  padding-top: 3vh;
 }
 .check-card > * {
   display: flex;
   flex-direction: column;
 }
-
+.sect1 {
+  border-bottom: 2px solid #8a2b06;
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  padding-bottom: 1rem;
+}
 .check-card {
 position: fixed;
 background-color: white;
-top: 20vh;
+top: 12vh;
 left: 0;
 right: 0;
 max-width: 33rem;
@@ -322,7 +335,7 @@ flex-direction: column;
 padding: 1rem;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 z-index: 50;
-margin: 0 auto;
+margin: 0 auto 1rem;
 }
 
 .pay-button {
@@ -335,14 +348,21 @@ font: inherit;
 cursor: pointer;
 background-color: transparent;
 border: 1px solid #8a2b06;
-padding: 0.5rem 1.5rem;
+padding: 0.5rem 0.6rem;
 border-radius: 25px;
 margin-left: 1rem;
+margin-top: 1rem;
+}
+
+.pay-button > button:hover,
+.pay-button > button:active {
+  background-color: #8a2b06;
+  color: white;
 }
 
 .check-container {
   flex-direction: column;
-  max-height: 20rem;
+  max-height: 13rem;
   overflow: auto;
 }
 
@@ -361,9 +381,44 @@ margin-left: 1rem;
 .user-info input {
    padding: 0.5rem;
    border-radius: 8px;
-   width: 85%;
+   width: 70%;
+   border: 0.5px solid #8a2b06;
 }
+
+.user-info input:focus {
+  outline: 2px dotted #8a2b06;
+}
+
 .user-info label {
   font-weight: bold;
   font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .check-card{
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    top: 16vh;
+  }
+  .check-card > * {
+    flex-basis: 50%;
+  }
+  .sect1 {
+    border-right: 2px solid #8a2b06;
+    border-bottom: none;
+    padding-right: 2rem;
+  }
+  .sect2 {
+    border-bottom: none;
+    margin-left: 2rem;
+  }
+  .check-container {
+    max-height: 16rem;
+  }
+  .user-info input {
+    width: 72%;
+ }
 }

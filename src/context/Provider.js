@@ -61,6 +61,9 @@ function cartReducer(state, action) {
             totalAmount: calcAmount 
         }
     }
+    if(action.type === "DEFAULT") {
+        return defaultCart;
+    }
 
     return defaultCart;
 };
@@ -81,12 +84,16 @@ function ContextProvider(props) {
         cartDispatch({type:"DELETE", id:id})
     }
 
+    function defaultHandler() {
+        cartDispatch({type:"DEFAULT"});
+    }
     const contextValue = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addHandler,
         removeItem: removeHandler,
-        deleteItem: deleteHandler
+        deleteItem: deleteHandler,
+        afterOrder: defaultHandler
     }
 
     return (

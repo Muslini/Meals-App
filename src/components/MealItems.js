@@ -8,14 +8,13 @@ const ctx = useContext(CartContext);
 
 function submitHandler(event) {
   event.preventDefault();
-  
   ctx.addItem({
     id: props.id,
     name: props.name,
     price: props.price,
     amount: +amountRef.current.value
   })
-
+  amountRef.current.value = "";
 } 
 
   return (

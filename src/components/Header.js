@@ -31,6 +31,7 @@ function Header() {
   }
   function closeCheckout() {
     setCheckout(false);
+    console.log("i just ran")
   }
 
   const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
@@ -42,7 +43,7 @@ function Header() {
       {showCart && <Cart closeCart={unhandleCart} openCheckout={startCheckout} />}
       {showCheckout && <CheckOut cancelCheckout={closeCheckout} />}
       <div className="header-box">
-        <p>MealsApp</p>
+        <p>FoodApp</p>
         <button
           onClick={handleCartClick}
           className={`button ${buttonBump && "bump"}`}

@@ -20,6 +20,10 @@ function CheckOut(props) {
   function deleteOne(id) {
     ctx.deleteItem(id);
   }
+  function mopUp() {
+    props.cancelCheckout();
+    ctx.afterOrder()
+  }
 
   const components = {
     email,
@@ -30,7 +34,7 @@ function CheckOut(props) {
     },
     publicKey,
     text: "Proceed to checkout",
-    onSuccess : () => alert("Your purchase was successful!"),
+    onSuccess : mopUp,
     onClose: () => alert("buy this food so hunger doesn't kill you")
   }
 
